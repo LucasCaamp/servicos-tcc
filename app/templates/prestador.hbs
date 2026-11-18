@@ -1,0 +1,32 @@
+<section class="card">
+  <h2>Área do prestador</h2>
+  <label>Seu nome
+    <input value={{this.nome}} {{on "input" (fn this.atualizar "nome")}} />
+  </label>
+</section>
+
+<section class="card">
+  <h2>Trabalhos disponíveis</h2>
+  {{#each this.servicos.abertos as |pedido|}}
+    <article class="item">
+      <strong>{{pedido.titulo}}</strong> — R$ {{pedido.preco}}
+      <p>{{pedido.descricao}}</p>
+      <small>Solicitante: {{pedido.solicitante}}</small>
+      <button class="btn" type="button" {{on "click" (fn this.aceitar pedido.id)}}>Aceitar</button>
+    </article>
+  {{else}}
+    <p>Nenhum trabalho disponível.</p>
+  {{/each}}
+</section>
+
+<section class="card">
+  <h2>Em andamento</h2>
+  {{#each this.servicos.emAndamento as |pedido|}}
+    <article class="item">
+      <strong>{{pedido.titulo}}</strong> ({{pedido.prestador}})
+      <button class="btn" type="button" {{on "click" (fn this.concluir pedido.id)}}>Concluir</button>
+    </article>
+  {{else}}
+    <p>Nada em andamento.</p>
+  {{/each}}
+</section>

@@ -1,0 +1,31 @@
+<section class="card">
+  <h2>Solicitar serviço</h2>
+  <form {{on "submit" this.enviar}}>
+    <label>Seu nome
+      <input value={{this.nome}} {{on "input" (fn this.atualizar "nome")}} />
+    </label>
+    <label>Título do serviço
+      <input value={{this.titulo}} {{on "input" (fn this.atualizar "titulo")}} />
+    </label>
+    <label>Descrição
+      <textarea {{on "input" (fn this.atualizar "descricao")}}>{{this.descricao}}</textarea>
+    </label>
+    <label>Orçamento (R$)
+      <input type="number" value={{this.preco}} {{on "input" (fn this.atualizar "preco")}} />
+    </label>
+    <button type="submit" class="btn">Publicar pedido</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Meus pedidos</h2>
+  {{#each this.servicos.pedidos as |p|}}
+    <article class="item">
+      <strong>{{p.titulo}}</strong> — R$ {{p.preco}}
+      <span class="status {{p.status}}">{{p.status}}</span>
+      {{#if p.prestador}}<small>Prestador: {{p.prestador}}</small>{{/if}}
+    </article>
+  {{else}}
+    <p>Nenhum pedido ainda.</p>
+  {{/each}}
+</section>
