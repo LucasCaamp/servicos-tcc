@@ -19,11 +19,11 @@
 
 <section class="card">
   <h2>Meus pedidos</h2>
-  {{#each this.servicos.pedidos as |p|}}
+  {{#each this.servicos.pedidos as |pedido|}}
     <article class="item">
-      <strong>{{p.titulo}}</strong> — R$ {{p.preco}}
-      <span class="status {{p.status}}">{{p.status}}</span>
-      {{#if p.prestador}}<small>Prestador: {{p.prestador}}</small>{{/if}}
+      <strong>{{pedido.titulo}}</strong> — R$ {{pedido.preco}}
+      <span class="status {{pedido.status}}">{{pedido.status}}</span>
+      {{#if pedido.prestador}}<small>Prestador: {{pedido.prestador}}</small>{{/if}}
     </article>
   {{else}}
     <p>Nenhum pedido ainda.</p>
