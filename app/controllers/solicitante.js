@@ -16,7 +16,14 @@ export default class SolicitanteController extends Controller {
 
   @action enviar(evento) {
     evento.preventDefault();
-    if (!this.titulo || !this.nome) return;
+    if (!this.titulo) {
+      alert('Título é obrigatório.');
+      return;
+    }
+    if (!this.nome) {
+      alert('Nome é obrigatório.');
+      return;
+    }
     this.servicos.criar({
       titulo: this.titulo,
       descricao: this.descricao,
